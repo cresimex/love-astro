@@ -1,0 +1,149 @@
+---
+// Cartas digitales que se pueden abrir
+---
+
+<section class="relative py-32 px-6">
+	<div class="max-w-6xl mx-auto">
+		<div class="text-center mb-20">
+			<h2 class="text-6xl md:text-7xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">
+				Cartas Para Ti 💌
+			</h2>
+			<p class="text-2xl text-purple-200 font-light" style="font-family: 'Cormorant Garamond', serif;">
+				Palabras que necesito que sepas
+			</p>
+		</div>
+
+		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+			<!-- Carta 1 -->
+			<div class="letter-card cursor-pointer" data-letter="1">
+				<div class="letter-envelope relative bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+					<div class="text-center">
+						<div class="text-6xl mb-4">💕</div>
+						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+							Por Qué Te Amo
+						</h3>
+						<p class="text-white/80 mt-2 text-sm">Toca para abrir</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Carta 2 -->
+			<div class="letter-card cursor-pointer" data-letter="2">
+				<div class="letter-envelope relative bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+					<div class="text-center">
+						<div class="text-6xl mb-4">🌟</div>
+						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+							Mis Momentos Favoritos
+						</h3>
+						<p class="text-white/80 mt-2 text-sm">Toca para abrir</p>
+					</div>
+				</div>
+			</div>
+
+			<!-- Carta 3 -->
+			<div class="letter-card cursor-pointer" data-letter="3">
+				<div class="letter-envelope relative bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+					<div class="text-center">
+						<div class="text-6xl mb-4">✨</div>
+						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+							Nuestro Futuro
+						</h3>
+						<p class="text-white/80 mt-2 text-sm">Toca para abrir</p>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<!-- Modal para mostrar el contenido de las cartas -->
+<div id="letter-modal" class="fixed inset-0 bg-black/90 z-50 hidden items-center justify-center p-4">
+	<div class="relative max-w-2xl w-full bg-white rounded-3xl p-8 md:p-12 max-h-[80vh] overflow-y-auto">
+		<button id="close-modal" class="absolute top-4 right-4 text-gray-500 hover:text-gray-700 text-3xl">
+			×
+		</button>
+		<div id="letter-content"></div>
+	</div>
+</div>
+
+<script>
+	const letterCards = document.querySelectorAll('.letter-card');
+	const modal = document.getElementById('letter-modal');
+	const closeBtn = document.getElementById('close-modal');
+	const letterContent = document.getElementById('letter-content');
+
+	const letters = {
+		'1': {
+			title: 'Por Qué Te Amo',
+			content: `
+				<div class="text-center mb-6">
+					<div class="text-6xl mb-4">💕</div>
+					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Por Qué Te Amo</h2>
+				</div>
+				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+					<p>Te amo por tu sonrisa que ilumina incluso mis días más oscuros.</p>
+					<p>Te amo por cómo me entiendes sin necesidad de palabras, por cómo me apoyas en cada locura que se me ocurre.</p>
+					<p>Te amo por esa noche en la banca, mirando el cielo, sin prisa, solo disfrutando el momento juntos.</p>
+					<p>Te amo por ser mi mejor amiga, mi cómplice, mi persona favorita en el mundo.</p>
+					<p class="font-semibold text-pink-600 text-xl mt-6">Te amo por ser exactamente quien eres.</p>
+				</div>
+			`
+		},
+		'2': {
+			title: 'Mis Momentos Favoritos',
+			content: `
+				<div class="text-center mb-6">
+					<div class="text-6xl mb-4">🌟</div>
+					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Mis Momentos Favoritos</h2>
+				</div>
+				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+					<p>• Cada vez que me miras y sonríes sin razón aparente.</p>
+					<p>• Nuestras conversaciones hasta la madrugada sobre todo y nada a la vez.</p>
+					<p>• Cuando bailamos en la sala como si nadie nos estuviera viendo.</p>
+					<p>• Esa noche del avión/estrella que se convirtió en "lo nuestro".</p>
+					<p>• Cada "te amo" que nos decimos, porque siempre se siente como la primera vez.</p>
+					<p class="font-semibold text-purple-600 text-xl mt-6">Pero mi momento favorito siempre es el que estamos viviendo ahora.</p>
+				</div>
+			`
+		},
+		'3': {
+			title: 'Nuestro Futuro',
+			content: `
+				<div class="text-center mb-6">
+					<div class="text-6xl mb-4">✨</div>
+					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Nuestro Futuro</h2>
+				</div>
+				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+					<p>Quiero seguir creando memorias contigo. Quiero más viajes, más aventuras, más noches mirando el cielo.</p>
+					<p>Quiero construir una vida juntos, llena de risas, de amor, de esos pequeños momentos que lo hacen todo especial.</p>
+					<p>Quiero envejecer a tu lado, recordando aquella noche en la banca cuando éramos jóvenes y debatíamos sobre aviones y estrellas.</p>
+					<p>Quiero que cada día sea una nueva oportunidad de demostrarte cuánto significas para mí.</p>
+					<p class="font-semibold text-blue-600 text-xl mt-6">Quiero pasar el resto de mi vida amándote.</p>
+				</div>
+			`
+		}
+	};
+
+	letterCards.forEach(card => {
+		card.addEventListener('click', () => {
+			const letterId = card.getAttribute('data-letter');
+			if (letterId && letters[letterId] && letterContent) {
+				letterContent.innerHTML = letters[letterId].content;
+				modal?.classList.remove('hidden');
+				modal?.classList.add('flex');
+			}
+		});
+	});
+
+	closeBtn?.addEventListener('click', () => {
+		modal?.classList.add('hidden');
+		modal?.classList.remove('flex');
+	});
+
+	modal?.addEventListener('click', (e) => {
+		if (e.target === modal) {
+			modal.classList.add('hidden');
+			modal.classList.remove('flex');
+		}
+	});
+</script>

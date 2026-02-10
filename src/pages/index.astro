@@ -1,17 +1,258 @@
 ---
-
+import Layout from '../layouts/Layout.astro';
+import Counters from '../components/Counters.astro';
+import Gallery from '../components/Gallery.astro';
+import Letters from '../components/Letters.astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
-</html>
+<Layout title="Para Ti, Mi Amor ✈️⭐">
+	<main class="relative">
+		<!-- Canvas de estrellas que cubre toda la página -->
+		<canvas id="stars-canvas" class="fixed inset-0 -z-10"></canvas>
+		
+		<!-- Overlay de gradiente sutil que cambia con scroll -->
+		<div id="gradient-overlay" class="fixed inset-0 -z-10 transition-opacity duration-[2000ms] ease-out"></div>
+
+		<!-- Hero Section -->
+		<section data-section="hero" class="section-trigger relative min-h-screen flex items-center justify-center overflow-hidden">
+			<!-- Avión animado -->
+			<div class="plane-container absolute">
+				<svg class="plane" width="50" height="50" viewBox="0 0 24 24" fill="white" opacity="0.9">
+					<path d="M21,16v-2l-8-5V3.5C13,2.67,12.33,2,11.5,2S10,2.67,10,3.5V9l-8,5v2l8-2.5V19l-2,1.5V22l3.5-1l3.5,1v-1.5L13,19v-5.5L21,16z"/>
+				</svg>
+			</div>
+
+			<!-- Contenido principal -->
+			<div class="relative z-10 text-center px-6 max-w-4xl">
+				<div class="mb-8 animate-fade-in">
+					<h1 class="text-7xl md:text-9xl font-bold text-white mb-4 tracking-tight leading-tight" style="font-family: 'Playfair Display', serif;">
+						¿Avión o Estrella?
+					</h1>
+					<div class="flex justify-center gap-4 text-6xl mb-6">
+						<span class="animate-float">✈️</span>
+						<span class="animate-float-delay">⭐</span>
+					</div>
+				</div>
+				
+				<p class="text-2xl md:text-3xl text-purple-200 mb-8 font-light animate-fade-in-delay" style="font-family: 'Cormorant Garamond', serif;">
+					La pregunta que lo cambió todo
+				</p>
+				
+				<div class="max-w-2xl mx-auto animate-fade-in-delay-2">
+					<p class="text-xl md:text-2xl text-white/90 leading-relaxed font-light" style="font-family: 'Cormorant Garamond', serif;">
+						Aquella noche en la banca, mirando el cielo durante una hora,<br/>
+						sin saber si era un avión o una estrella...<br/>
+						<span class="text-pink-300 font-semibold">pero sabiendo que era el comienzo de algo especial.</span>
+					</p>
+				</div>
+			</div>
+
+			<!-- Scroll indicator -->
+			<div class="absolute bottom-10 left-1/2 transform -translate-x-1/2 animate-bounce z-20">
+				<div class="flex flex-col items-center gap-2 text-white/70">
+					<span class="text-sm tracking-widest" style="font-family: 'Cormorant Garamond', serif;">DESCUBRE MÁS</span>
+					<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+						<path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"/>
+					</svg>
+				</div>
+			</div>
+		</section>
+
+		<!-- Segunda sección -->
+		<section data-section="intro" class="section-trigger relative min-h-screen flex items-center justify-center py-32 px-6">
+			<div class="max-w-4xl mx-auto text-center relative z-10">
+				<h2 class="text-6xl md:text-7xl font-bold text-white mb-8" style="font-family: 'Playfair Display', serif;">
+					Para Ti, Mi Amor
+				</h2>
+				<p class="text-2xl md:text-3xl text-purple-200 font-light leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+					Un espacio especial para celebrar cada momento, cada risa,<br/>
+					cada "te amo" y cada aventura que hemos vivido juntos.
+				</p>
+			</div>
+		</section>
+
+		<!-- Contadores -->
+		<div data-section="counters" class="section-trigger">
+			<Counters />
+		</div>
+
+		<Gallery/>
+
+	</main>
+</Layout>
+
+<style>
+	/* Animación del avión */
+	.plane-container {
+		top: 15%;
+		right: -60px;
+		animation: fly 20s linear infinite;
+	}
+
+	.plane {
+		filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.6));
+		animation: wobble 3s ease-in-out infinite;
+	}
+
+	@keyframes fly {
+		0% {
+			right: -60px;
+			top: 15%;
+		}
+		100% {
+			right: 110%;
+			top: 70%;
+		}
+	}
+
+	@keyframes wobble {
+		0%, 100% { transform: rotate(-3deg); }
+		50% { transform: rotate(3deg); }
+	}
+
+	/* Animaciones flotantes */
+	@keyframes float {
+		0%, 100% { transform: translateY(0px); }
+		50% { transform: translateY(-20px); }
+	}
+
+	.animate-float {
+		animation: float 3s ease-in-out infinite;
+	}
+
+	.animate-float-delay {
+		animation: float 3s ease-in-out infinite 1.5s;
+	}
+
+	/* Animaciones de fade in */
+	.animate-fade-in {
+		animation: fadeIn 1.2s ease-out;
+	}
+
+	.animate-fade-in-delay {
+		animation: fadeIn 1.2s ease-out 0.4s both;
+	}
+
+	.animate-fade-in-delay-2 {
+		animation: fadeIn 1.2s ease-out 0.8s both;
+	}
+
+	@keyframes fadeIn {
+		from {
+			opacity: 0;
+			transform: translateY(30px);
+		}
+		to {
+			opacity: 1;
+			transform: translateY(0);
+		}
+	}
+
+	/* Gradiente overlay base - colores del espacio profundo */
+	#gradient-overlay {
+		background: linear-gradient(to bottom, 
+			rgba(10, 10, 30, 0.8) 0%,
+			rgba(20, 15, 45, 0.7) 50%,
+			rgba(30, 20, 60, 0.6) 100%
+		);
+	}
+
+	/* Variaciones sutiles del gradiente */
+	#gradient-overlay.section-hero {
+		background: linear-gradient(to bottom, 
+			rgba(10, 10, 30, 0.85) 0%,
+			rgba(25, 15, 50, 0.75) 50%,
+			rgba(40, 20, 70, 0.65) 100%
+		);
+	}
+
+	#gradient-overlay.section-intro {
+		background: linear-gradient(to bottom, 
+			rgba(15, 10, 35, 0.8) 0%,
+			rgba(30, 20, 60, 0.7) 50%,
+			rgba(45, 30, 80, 0.6) 100%
+		);
+	}
+
+	#gradient-overlay.section-counters {
+		background: linear-gradient(to bottom, 
+			rgba(20, 15, 40, 0.75) 0%,
+			rgba(35, 25, 70, 0.65) 50%,
+			rgba(50, 35, 90, 0.55) 100%
+		);
+	}
+</style>
+
+<script>
+	// Canvas para estrellas que cubre toda la página
+	const canvas = document.getElementById('stars-canvas') as HTMLCanvasElement;
+	const ctx = canvas.getContext('2d');
+	
+	if (ctx) {
+		// Hacer el canvas del tamaño completo del documento
+		function resizeCanvas() {
+			canvas.width = window.innerWidth;
+			canvas.height = document.documentElement.scrollHeight;
+		}
+		
+		resizeCanvas();
+		window.addEventListener('resize', resizeCanvas);
+
+		// Crear más estrellas para cubrir toda la página
+		const stars: { x: number; y: number; size: number; opacity: number; speed: number; baseOpacity: number }[] = [];
+		
+		for (let i = 0; i < 800; i++) {
+			const baseOpacity = Math.random() * 0.5 + 0.3;
+			stars.push({
+				x: Math.random() * canvas.width,
+				y: Math.random() * canvas.height,
+				size: Math.random() * 1.5 + 0.5,
+				opacity: baseOpacity,
+				speed: Math.random() * 0.015 + 0.005,
+				baseOpacity: baseOpacity
+			});
+		}
+
+		function drawStars() {
+			if (!ctx) return;
+			
+			// Fondo negro espacial
+			ctx.fillStyle = '#000000';
+			ctx.fillRect(0, 0, canvas.width, canvas.height);
+			
+			stars.forEach(star => {
+				ctx.fillStyle = `rgba(255, 255, 255, ${star.opacity})`;
+				ctx.beginPath();
+				ctx.arc(star.x, star.y, star.size, 0, Math.PI * 2);
+				ctx.fill();
+				
+				// Efecto de parpadeo más sutil
+				star.opacity += star.speed;
+				if (star.opacity > star.baseOpacity + 0.3 || star.opacity < star.baseOpacity - 0.2) {
+					star.speed = -star.speed;
+				}
+			});
+			
+			requestAnimationFrame(drawStars);
+		}
+
+		drawStars();
+	}
+
+	// Cambiar gradiente sutilmente según la sección
+	const gradientOverlay = document.getElementById('gradient-overlay');
+	const sections = document.querySelectorAll('.section-trigger');
+
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting && gradientOverlay) {
+				const sectionName = entry.target.getAttribute('data-section');
+				gradientOverlay.className = `fixed inset-0 -z-10 transition-opacity duration-[2000ms] ease-out section-${sectionName}`;
+			}
+		});
+	}, {
+		threshold: 0.4
+	});
+
+	sections.forEach(section => observer.observe(section));
+</script>
