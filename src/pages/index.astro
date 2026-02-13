@@ -9,7 +9,7 @@ import RingReveal from '../components/RingReveal.astro';
 <Layout title="Para Ti, Mi Amor ✈️⭐">
 	<main class="relative">
 		<!-- Canvas de estrellas que cubre toda la página -->
-		<canvas id="stars-canvas" class="fixed inset-0 -z-10"></canvas>
+		<canvas id="stars-canvas" class="fixed inset-0 -z-20"></canvas>
 		
 		<!-- Overlay de gradiente sutil que cambia con scroll -->
 		<div id="gradient-overlay" class="fixed inset-0 -z-10 transition-opacity duration-[2000ms] ease-out"></div>
@@ -215,13 +215,17 @@ import RingReveal from '../components/RingReveal.astro';
 	const canvas = document.getElementById('stars-canvas') as HTMLCanvasElement;
 	const ctx = canvas.getContext('2d');
 	
-	if (ctx) {
-		// Hacer el canvas del tamaño completo del documento
+	if (ctx && canvas) {
 		function resizeCanvas() {
-			canvas.width = window.innerWidth;
-			canvas.height = document.documentElement.scrollHeight;
+			const width = window.innerWidth;
+			const height = Math.max(window.innerHeight, document.documentElement.scrollHeight);
+			// Ajustar tanto el buffer como el tamaño CSS para evitar distorsiones
+			canvas.width = width;
+			canvas.height = height;
+			canvas.style.width = `${width}px`;
+			canvas.style.height = `${height}px`;
 		}
-		
+
 		resizeCanvas();
 		window.addEventListener('resize', resizeCanvas);
 
@@ -242,8 +246,7 @@ import RingReveal from '../components/RingReveal.astro';
 
 		function drawStars() {
 			if (!ctx) return;
-			
-			// Fondo negro espacial
+			// Fondo negro espacial cubriendo todo el canvas
 			ctx.fillStyle = '#000000';
 			ctx.fillRect(0, 0, canvas.width, canvas.height);
 			
