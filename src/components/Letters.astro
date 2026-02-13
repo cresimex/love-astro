@@ -16,7 +16,7 @@
 		<div class="grid grid-cols-1 md:grid-cols-3 gap-8">
 			<!-- Carta 1 -->
 			<div class="letter-card cursor-pointer" data-letter="1">
-				<div class="letter-envelope relative bg-gradient-to-br from-pink-500 to-rose-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+				<div class="letter-envelope envelope-paper relative rounded-2xl p-6 h-64 flex items-center justify-center transition-transform duration-300 group">
 					<div class="text-center">
 						<div class="text-6xl mb-4">💕</div>
 						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
@@ -29,7 +29,7 @@
 
 			<!-- Carta 2 -->
 			<div class="letter-card cursor-pointer" data-letter="2">
-				<div class="letter-envelope relative bg-gradient-to-br from-purple-500 to-indigo-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+				<div class="letter-envelope envelope-paper relative rounded-2xl p-6 h-64 flex items-center justify-center transition-transform duration-300 group">
 					<div class="text-center">
 						<div class="text-6xl mb-4">🌟</div>
 						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
@@ -42,7 +42,7 @@
 
 			<!-- Carta 3 -->
 			<div class="letter-card cursor-pointer" data-letter="3">
-				<div class="letter-envelope relative bg-gradient-to-br from-blue-500 to-cyan-600 rounded-2xl p-8 h-64 flex items-center justify-center shadow-2xl hover:scale-105 transition-transform duration-300">
+				<div class="letter-envelope envelope-paper relative rounded-2xl p-6 h-64 flex items-center justify-center transition-transform duration-300 group">
 					<div class="text-center">
 						<div class="text-6xl mb-4">✨</div>
 						<h3 class="text-2xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
@@ -67,83 +67,167 @@
 </div>
 
 <script>
-	const letterCards = document.querySelectorAll('.letter-card');
-	const modal = document.getElementById('letter-modal');
-	const closeBtn = document.getElementById('close-modal');
-	const letterContent = document.getElementById('letter-content');
+if (typeof document !== 'undefined') {
+	(function () {
+		const letterCards = document.querySelectorAll('.letter-card');
+		const modal = document.getElementById('letter-modal');
+		const closeBtn = document.getElementById('close-modal');
+		const letterContent = document.getElementById('letter-content');
 
-	const letters = {
-		'1': {
-			title: 'Por Qué Te Amo',
-			content: `
-				<div class="text-center mb-6">
-					<div class="text-6xl mb-4">💕</div>
-					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Por Qué Te Amo</h2>
-				</div>
-				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
-					<p>Te amo por tu sonrisa que ilumina incluso mis días más oscuros.</p>
-					<p>Te amo por cómo me entiendes sin necesidad de palabras, por cómo me apoyas en cada locura que se me ocurre.</p>
-					<p>Te amo por esa noche en la banca, mirando el cielo, sin prisa, solo disfrutando el momento juntos.</p>
-					<p>Te amo por ser mi mejor amiga, mi cómplice, mi persona favorita en el mundo.</p>
-					<p class="font-semibold text-pink-600 text-xl mt-6">Te amo por ser exactamente quien eres.</p>
-				</div>
-			`
-		},
-		'2': {
-			title: 'Mis Momentos Favoritos',
-			content: `
-				<div class="text-center mb-6">
-					<div class="text-6xl mb-4">🌟</div>
-					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Mis Momentos Favoritos</h2>
-				</div>
-				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
-					<p>• Cada vez que me miras y sonríes sin razón aparente.</p>
-					<p>• Nuestras conversaciones hasta la madrugada sobre todo y nada a la vez.</p>
-					<p>• Cuando bailamos en la sala como si nadie nos estuviera viendo.</p>
-					<p>• Esa noche del avión/estrella que se convirtió en "lo nuestro".</p>
-					<p>• Cada "te amo" que nos decimos, porque siempre se siente como la primera vez.</p>
-					<p class="font-semibold text-purple-600 text-xl mt-6">Pero mi momento favorito siempre es el que estamos viviendo ahora.</p>
-				</div>
-			`
-		},
-		'3': {
-			title: 'Nuestro Futuro',
-			content: `
-				<div class="text-center mb-6">
-					<div class="text-6xl mb-4">✨</div>
-					<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Nuestro Futuro</h2>
-				</div>
-				<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
-					<p>Quiero seguir creando memorias contigo. Quiero más viajes, más aventuras, más noches mirando el cielo.</p>
-					<p>Quiero construir una vida juntos, llena de risas, de amor, de esos pequeños momentos que lo hacen todo especial.</p>
-					<p>Quiero envejecer a tu lado, recordando aquella noche en la banca cuando éramos jóvenes y debatíamos sobre aviones y estrellas.</p>
-					<p>Quiero que cada día sea una nueva oportunidad de demostrarte cuánto significas para mí.</p>
-					<p class="font-semibold text-blue-600 text-xl mt-6">Quiero pasar el resto de mi vida amándote.</p>
-				</div>
-			`
-		}
-	};
+		const letters = {
+			'1': {
+				title: 'Por Qué Te Amo',
+				content: `
+					<div class="text-center mb-6">
+						<div class="text-6xl mb-4">💕</div>
+						<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Por Qué Te Amo</h2>
+					</div>
+					<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+						<p>Te amo por tu sonrisa que ilumina incluso mis días más oscuros.</p>
+						<p>Te amo por cómo me entiendes sin necesidad de palabras, por cómo me apoyas en cada locura que se me ocurre.</p>
+						<p>Te amo por esa noche en la banca, mirando el cielo, sin prisa, solo disfrutando el momento juntos.</p>
+						<p>Te amo por ser mi mejor amiga, mi cómplice, mi persona favorita en el mundo.</p>
+						<p class="font-semibold text-pink-600 text-xl mt-6">Te amo por ser exactamente quien eres.</p>
+					</div>
+				`
+			},
+			'2': {
+				title: 'Mis Momentos Favoritos',
+				content: `
+					<div class="text-center mb-6">
+						<div class="text-6xl mb-4">🌟</div>
+						<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Mis Momentos Favoritos</h2>
+					</div>
+					<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+						<p>• Cada vez que me miras y sonríes sin razón aparente.</p>
+						<p>• Nuestras conversaciones hasta la madrugada sobre todo y nada a la vez.</p>
+						<p>• Cuando bailamos en la sala como si nadie nos estuviera viendo.</p>
+						<p>• Esa noche del avión/estrella que se convirtió en "lo nuestro".</p>
+						<p>• Cada "te amo" que nos decimos, porque siempre se siente como la primera vez.</p>
+						<p class="font-semibold text-purple-600 text-xl mt-6">Pero mi momento favorito siempre es el que estamos viviendo ahora.</p>
+					</div>
+				`
+			},
+			'3': {
+				title: 'Nuestro Futuro',
+				content: `
+					<div class="text-center mb-6">
+						<div class="text-6xl mb-4">✨</div>
+						<h2 class="text-4xl font-bold text-gray-800 mb-6" style="font-family: 'Playfair Display', serif;">Nuestro Futuro</h2>
+					</div>
+					<div class="space-y-4 text-gray-700 text-lg leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+						<p>Quiero seguir creando memorias contigo. Quiero más viajes, más aventuras, más noches mirando el cielo.</p>
+						<p>Quiero construir una vida juntos, llena de risas, de amor, de esos pequeños momentos que lo hacen todo especial.</p>
+						<p>Quiero envejecer a tu lado, recordando aquella noche en la banca cuando éramos jóvenes y debatíamos sobre aviones y estrellas.</p>
+						<p>Quiero que cada día sea una nueva oportunidad de demostrarte cuánto significas para mí.</p>
+						<p class="font-semibold text-blue-600 text-xl mt-6">Quiero pasar el resto de mi vida amándote.</p>
+					</div>
+				`
+			}
+		};
 
-	letterCards.forEach(card => {
-		card.addEventListener('click', () => {
-			const letterId = card.getAttribute('data-letter');
-			if (letterId && letters[letterId] && letterContent) {
-				letterContent.innerHTML = letters[letterId].content;
-				modal?.classList.remove('hidden');
-				modal?.classList.add('flex');
+		letterCards.forEach(card => {
+			card.addEventListener('click', () => {
+				const letterId = card.getAttribute('data-letter');
+				if (!(letterId && letters[letterId] && letterContent)) return;
+
+				// Prevent double clicks
+				if (card.classList.contains('opening') || card.classList.contains('opened')) return;
+
+				// Kick off flap opening animation
+				card.classList.add('opening');
+
+				// After the flap animation, mark opened and show modal
+				const ANIM_DURATION = 480; // ms (should match CSS transition)
+				setTimeout(() => {
+					card.classList.remove('opening');
+					card.classList.add('opened');
+
+					// populate and show modal
+					letterContent.innerHTML = letters[letterId].content;
+					modal?.classList.remove('hidden');
+					modal?.classList.add('flex');
+				}, ANIM_DURATION);
+			});
+		});
+
+		closeBtn?.addEventListener('click', () => {
+			modal?.classList.add('hidden');
+			modal?.classList.remove('flex');
+		});
+
+		modal?.addEventListener('click', (e) => {
+			if (e.target === modal) {
+				modal.classList.add('hidden');
+				modal.classList.remove('flex');
 			}
 		});
-	});
-
-	closeBtn?.addEventListener('click', () => {
-		modal?.classList.add('hidden');
-		modal?.classList.remove('flex');
-	});
-
-	modal?.addEventListener('click', (e) => {
-		if (e.target === modal) {
-			modal.classList.add('hidden');
-			modal.classList.remove('flex');
-		}
-	});
+	})();
+}
 </script>
+
+<style>
+/* Envelope / paper look */
+.envelope-paper{
+	background: linear-gradient(180deg, #fffdf8 0%, #fff9f0 100%);
+	border: 1px solid rgba(16,24,40,0.06);
+	box-shadow: 0 6px 20px rgba(2,6,23,0.45);
+	position: relative;
+	overflow: hidden;
+}
+
+/* subtle paper grain using radial gradients */
+.envelope-paper{
+	background-image:
+		radial-gradient(rgba(0,0,0,0.02) 0.5px, transparent 0.5px),
+		linear-gradient(180deg, #fffdf8 0%, #fff9f0 100%);
+	background-size: 6px 6px, 100% 100%;
+}
+
+.envelope-paper::before{
+	/* top flap */
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	top: 0;
+	height: 48%;
+	background: linear-gradient(180deg, rgba(250,245,240,0.98), rgba(245,240,235,0.98));
+	clip-path: polygon(0 0, 100% 0, 50% 100%);
+	transform-origin: top center;
+	transition: transform 260ms ease, opacity 260ms ease;
+	z-index: 3;
+	box-shadow: 0 6px 10px rgba(2,6,23,0.12) inset;
+}
+
+.envelope-paper::after{
+	/* bottom seam */
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 16px;
+	background: linear-gradient(180deg, rgba(0,0,0,0.02), rgba(255,255,255,0));
+	z-index: 2;
+}
+
+.envelope-paper .text-center{ z-index: 4; }
+
+.letter-card:hover .envelope-paper{ transform: translateY(-6px); }
+
+/* when modal opens we could hide the flap (visual only) by adding an 'opened' class to .letter-card via JS later */
+.letter-card.opening .envelope-paper::before{ transform: rotateX(-150deg) translateY(-6%); opacity: 0.02; }
+.letter-card.opened .envelope-paper::before{ transform: rotateX(-180deg) translateY(-10%); opacity: 0; }
+
+.envelope-paper::before{
+	transform-style: preserve-3d;
+	backface-visibility: hidden;
+}
+
+/* subtle border for the front label */
+.envelope-paper h3{ color: #111827; }
+.envelope-paper p{ color: #374151; }
+
+@media (prefers-reduced-motion: reduce){ .letter-card, .envelope-paper::before{ transition: none; } }
+</style>

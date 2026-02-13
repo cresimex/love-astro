@@ -3,6 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import Counters from '../components/Counters.astro';
 import Gallery from '../components/Gallery.astro';
 import Letters from '../components/Letters.astro';
+import RingReveal from '../components/RingReveal.astro';
 ---
 
 <Layout title="Para Ti, Mi Amor ✈️⭐">
@@ -76,7 +77,33 @@ import Letters from '../components/Letters.astro';
 			<Counters />
 		</div>
 
-		<Gallery/>
+		<!-- NUEVAS SECCIONES -->
+		<div data-section="gallery" class="section-trigger">
+			<Gallery />
+		</div>
+
+		<div data-section="letters" class="section-trigger">
+			<Letters />
+		</div>
+
+		<div data-section="ring" class="section-trigger">
+			<RingReveal />
+		</div>
+
+		<!-- Footer final -->
+		<footer class="relative py-16 px-6 text-center">
+			<div class="max-w-4xl mx-auto">
+				<p class="text-2xl text-purple-200 mb-4" style="font-family: 'Cormorant Garamond', serif;">
+					Hecho con toda mi <b>alma</b> para ti
+				</p>
+				<p class="text-lg text-purple-300" style="font-family: 'Cormorant Garamond', serif;">
+					San Valentín 2026
+				</p>
+				<div class="mt-8 text-5xl">
+					✈️⭐
+				</div>
+			</div>
+		</footer>
 
 	</main>
 </Layout>

@@ -1,0 +1,220 @@
+---
+// Sección especial para revelar el anillo
+---
+
+<section class="relative py-32 px-6 min-h-screen flex items-center justify-center">
+	<div class="max-w-5xl mx-auto text-center">
+		<!-- Intro -->
+		<div class="mb-16 opacity-0 translate-y-10" id="ring-intro">
+			<h2 class="text-5xl md:text-6xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">
+				¿Recuerdas Aquella Noche?
+			</h2>
+			<p class="text-2xl md:text-3xl text-purple-200 font-light leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+				Mirando el cielo, preguntándonos si era un avión o una estrella...
+			</p>
+		</div>
+
+		<!-- Caja interactiva del anillo -->
+		<div class="relative mb-16 opacity-0 translate-y-10" id="ring-box-container">
+			<div id="ring-box" class="relative mx-auto w-80 h-80 cursor-pointer group perspective-1000">
+				<!-- Caja cerrada -->
+				<div id="box-closed" class="absolute inset-0 bg-gradient-to-b from-gray-900 to-gray-800 rounded-2xl shadow-xl flex items-center justify-center transition-transform duration-400 group-hover:-translate-y-1">
+					<div class="text-center">
+						<div class="text-7xl mb-4 animate-bounce">🎁</div>
+						<p class="text-white text-xl font-semibold" style="font-family: 'Cormorant Garamond', serif;">
+							Toca para abrir
+						</p>
+					</div>
+				</div>
+
+				<!-- Caja abierta (oculta inicialmente) -->
+				<div id="box-opened" class="absolute inset-0 hidden">
+					<div class="relative w-full h-full bg-white/6 rounded-2xl shadow-lg p-8 flex items-center justify-center">
+						<!-- Anillo -->
+						<div class="relative">
+							<div class="ring-container">
+								<svg class="w-48 h-48 animate-spin-slow" viewBox="0 0 200 200">
+									<!-- Aro del anillo -->
+									<circle cx="100" cy="100" r="60" fill="none" stroke="url(#silverGradient)" stroke-width="8"/>
+									<defs>
+										<linearGradient id="silverGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+											<stop offset="0%" style="stop-color:#E8E8E8;stop-opacity:1" />
+											<stop offset="50%" style="stop-color:#FFFFFF;stop-opacity:1" />
+											<stop offset="100%" style="stop-color:#C0C0C0;stop-opacity:1" />
+										</linearGradient>
+									</defs>
+									
+									<!-- Detalles del anillo -->
+									<circle cx="100" cy="40" r="12" fill="url(#diamondGradient)" class="animate-pulse"/>
+									<defs>
+										<radialGradient id="diamondGradient">
+											<stop offset="0%" style="stop-color:#FFFFFF;stop-opacity:1" />
+											<stop offset="50%" style="stop-color:#E0E0FF;stop-opacity:1" />
+											<stop offset="100%" style="stop-color:#C0C0E0;stop-opacity:1" />
+										</radialGradient>
+									</defs>
+
+									<!-- Símbolo de avión/estrella en el anillo -->
+									<g transform="translate(100, 100)">
+										<text x="-8" y="-50" font-size="16" fill="#666">✈️</text>
+									</g>
+								</svg>
+							</div>
+							
+							<!-- Brillo y destellos -->
+							<div class="absolute inset-0 flex items-center justify-center">
+								<div class="sparkle"></div>
+								<div class="sparkle delay-1"></div>
+								<div class="sparkle delay-2"></div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Mensaje después de abrir -->
+		<div id="ring-message" class="hidden opacity-0">
+			<div class="bg-white/10 backdrop-blur-md rounded-3xl p-8 md:p-12 border border-white/20 max-w-3xl mx-auto">
+				<div class="text-6xl mb-6">✈️⭐</div>
+				<h3 class="text-4xl md:text-5xl font-bold text-white mb-6" style="font-family: 'Playfair Display', serif;">
+					Un Anillo de Avión
+				</h3>
+				<div class="space-y-4 text-xl md:text-2xl text-purple-200 leading-relaxed" style="font-family: 'Cormorant Garamond', serif;">
+					<p>
+						Nunca supimos si era un avión o una estrella aquella noche...
+					</p>
+					<p>
+						Pero ese momento se convirtió en <span class="text-pink-300 font-semibold">nuestro símbolo</span>.
+					</p>
+					<p>
+						Por eso nos tatuamos. Por eso este anillo lleva un avión.
+					</p>
+					<p class="text-pink-300 font-bold text-3xl mt-8">
+						Porque tú eres mi avión, mi estrella, mi todo.
+					</p>
+				</div>
+
+				<!-- Detalles del anillo -->
+				<div class="mt-12 pt-8 border-t border-white/20">
+					<h4 class="text-2xl font-semibold text-white mb-4" style="font-family: 'Playfair Display', serif;">
+						Detalles del Anillo
+					</h4>
+					<div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-left">
+						<div class="bg-white/5 rounded-xl p-4">
+							<p class="text-pink-300 font-semibold mb-1">Material</p>
+							<p class="text-white">Plata 925</p>
+						</div>
+						<div class="bg-white/5 rounded-xl p-4">
+							<p class="text-pink-300 font-semibold mb-1">Talla</p>
+							<p class="text-white">5</p>
+						</div>
+						<div class="bg-white/5 rounded-xl p-4">
+							<p class="text-pink-300 font-semibold mb-1">Diseño</p>
+							<p class="text-white">Avión grabado ✈️</p>
+						</div>
+						<div class="bg-white/5 rounded-xl p-4">
+							<p class="text-pink-300 font-semibold mb-1">Significado</p>
+							<p class="text-white">Nuestra historia ⭐</p>
+						</div>
+					</div>
+				</div>
+
+				<!-- Mensaje final -->
+				<div class="mt-12">
+					<p class="text-3xl md:text-4xl font-bold text-white" style="font-family: 'Playfair Display', serif;">
+						Feliz San Valentín, Mi Amor 💕
+					</p>
+					<p class="text-xl text-purple-200 mt-4" style="font-family: 'Cormorant Garamond', serif;">
+						Espero que este regalo te recuerde siempre aquella noche especial
+					</p>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const ringBox = document.getElementById('ring-box');
+	const boxClosed = document.getElementById('box-closed');
+	const boxOpened = document.getElementById('box-opened');
+	const ringMessage = document.getElementById('ring-message');
+	const ringIntro = document.getElementById('ring-intro');
+	const ringBoxContainer = document.getElementById('ring-box-container');
+
+	// Animación de entrada cuando la sección es visible
+	const observer = new IntersectionObserver((entries) => {
+		entries.forEach(entry => {
+			if (entry.isIntersecting) {
+				setTimeout(() => {
+					ringIntro?.classList.remove('opacity-0', 'translate-y-10');
+					ringIntro?.classList.add('animate-fade-in-up');
+				}, 200);
+				
+				setTimeout(() => {
+					ringBoxContainer?.classList.remove('opacity-0', 'translate-y-10');
+					ringBoxContainer?.classList.add('animate-fade-in-up');
+				}, 600);
+			}
+		});
+	}, { threshold: 0.3 });
+
+	const section = document.querySelector('#ring-box-container')?.closest('section');
+	if (section) observer.observe(section);
+
+	// Abrir la caja
+	let isOpen = false;
+	ringBox?.addEventListener('click', () => {
+		if (!isOpen) {
+			isOpen = true;
+			
+			// Ocultar caja cerrada
+			boxClosed?.classList.add('opacity-0', 'scale-95');
+			
+			setTimeout(() => {
+				boxClosed?.classList.add('hidden');
+				boxOpened?.classList.remove('hidden');
+				
+				// Mostrar mensaje
+				setTimeout(() => {
+					ringMessage?.classList.remove('hidden');
+					setTimeout(() => {
+						ringMessage?.classList.remove('opacity-0');
+						ringMessage?.classList.add('animate-fade-in-up');
+					}, 100);
+				}, 800);
+			}, 500);
+		}
+	});
+</script>
+
+<style>
+	.perspective-1000 { perspective: 1000px; }
+
+	.animate-spin-slow { animation: spin 40s linear infinite; }
+	@keyframes spin { from { transform: rotate(0deg); } to { transform: rotate(360deg); } }
+
+	/* Diamond pulse: subtle */
+	.animate-pulse { animation: ringPulse 2.8s ease-in-out infinite; }
+	@keyframes ringPulse { 0% { transform: scale(1); opacity: 0.95 } 50% { transform: scale(1.04); opacity: 1 } 100% { transform: scale(1); opacity: 0.95 } }
+
+	/* Subtle sparkles */
+	.sparkle {
+		position: absolute;
+		width: 6px;
+		height: 6px;
+		background: rgba(255,255,255,0.9);
+		border-radius: 50%;
+		box-shadow: 0 0 8px rgba(255,255,255,0.25);
+		opacity: 0.85;
+		animation: sparkle-animation 2.6s ease-in-out infinite;
+	}
+
+	.sparkle.delay-1 { animation-delay: 0.6s; left: 22%; top: 28%; }
+	.sparkle.delay-2 { animation-delay: 1.2s; right: 22%; bottom: 28%; }
+
+	@keyframes sparkle-animation { 0%,100%{ opacity:0; transform: scale(0.6);} 50%{ opacity:0.9; transform: scale(1.1);} }
+
+	.animate-fade-in-up { animation: fadeInUp 0.8s ease-out forwards; }
+	@keyframes fadeInUp { to { opacity: 1; transform: translateY(0); } }
+</style>
